@@ -105,7 +105,14 @@ class Player:
     A Player in the text advanture game.
 
     Instance Attributes:
-        - # TODO
+        - x:
+            The player's x position
+        -  y:
+            The player's y position
+        -  inventory:
+            The player's items stored in a list
+        - victory:
+            Boolean storing whether or not the player has won.
 
     Representation Invariants:
         - # TODO
@@ -174,9 +181,24 @@ class World:
 
         Return this list representation of the map.
         """
+        # Tries to open the file
+        try:
+            file = open("map.txt")
+        except FileNotFoundError:
+            print("The map file does not exist or is not in the right directory")
+            raise FileNotFoundError
 
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
-
+        # create a map that will hold the data
+        map_list = []
+        # iterate through the file
+        line = file.readline()
+        while line:
+            # save each line to a list
+            map_list.append([int(x) for x in line.split()])
+            line = file.readline()
+        # close the file
+        file.close()
+        return map_list
     # TODO: Add methods for loading location data and item data (see note above).
 
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
