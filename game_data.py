@@ -25,7 +25,15 @@ class Location:
     """A location in our text adventure game world.
 
     Instance Attributes:
-        - # TODO
+        - map_position:
+            The number of the position of this location on the map
+        - brief_description:
+            A brief description of the location. This will be displayed every time this location is
+            visited after the first time
+        - long_description:
+            A long description of the location. This will be displayed the first time a location is visited
+        - available_actions:
+            A list of available actions in this location
 
     Representation Invariants:
         - # TODO
@@ -75,10 +83,14 @@ class Item:
     Instance Attributes:
         - name:
             The name of the item
-        - start_position
+        - start_position:
+            The location of the item when the map is first loaded in. This is stored as the location
+            number.
+        -
 
     Representation Invariants:
-        - # TODO
+        - name != ''
+        -
     """
 
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
@@ -102,7 +114,7 @@ class Item:
 
 class Player:
     """
-    A Player in the text advanture game.
+    A Player in the text adventure game.
 
     Instance Attributes:
         - x:
@@ -112,10 +124,11 @@ class Player:
         -  inventory:
             The player's items stored in a list
         - victory:
-            Boolean storing whether or not the player has won.
+            Boolean storing whether the player has won.
 
     Representation Invariants:
-        - # TODO
+        - x >= 0
+        - y >= 0
     """
 
     def __init__(self, x: int, y: int) -> None:
@@ -138,7 +151,10 @@ class World:
 
     Instance Attributes:
         - map: a nested list representation of this world's map
-        - # TODO add more instance attributes as needed; do NOT remove the map attribute
+        - location_data:
+            Name of text file containing location data.
+        - items_data: name of text file containing item data
+
 
     Representation Invariants:
         - # TODO
@@ -198,9 +214,17 @@ class World:
             line = file.readline()
         # close the file
         file.close()
+
+        # save the data to the instance attribute
+        self.map = map_list
+
         return map_list
     # TODO: Add methods for loading location data and item data (see note above).
+    def load_locations(self, location_data: TextIO) ->Location:
+        """
+        Save the location data for the world in the location_data attribute of this object as a
 
+        """
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
