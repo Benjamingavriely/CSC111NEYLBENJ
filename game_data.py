@@ -221,47 +221,70 @@ class World:
 
         return map_list
 
-def load_items(self, item_data: TextIO) -> list[Item]:
-    """
-    This loads the items from the item file as an item object. It then saves them in the
-    items instance attribute and returns the list of items objects.
-    """
-    # Tries to open the file
-    try:
-        file = open("items.txt")
-    except FileNotFoundError:
-        print("The item file does not exist or is not in the right directory")
-        raise FileNotFoundError
+    def load_items(self, item_data: TextIO) -> list[Item]:
+        """
+        This loads the items from the item file as an item object. It then saves them in the
+        items instance attribute and returns the list of items objects.
+        """
+        # Tries to open the file
+        try:
+            file = open("items.txt")
+        except FileNotFoundError:
+            print("The item file does not exist or is not in the right directory")
+            raise FileNotFoundError
 
-    # stores item objects
-    items = []
+        # stores item objects
+        items = []
 
-    # iterate through the file
-    line = file.readline()
-    while line:
-        # save each line to an item
-        item_data = line.split()
+        # iterate through the file
+        line = file.readline()
+        while line:
+            # save each line to an item
+            item_data = line.split()
 
-        # create an item object
-        curr_item = Item(item_data[0], int(item_data[1]), int(item_data[2]), int(item_data[3]))
+            # create an item object
+            curr_item = Item(item_data[0], int(item_data[1]), int(item_data[2]), int(item_data[3]))
 
-        # add the item to the item list
-        items.append(curr_item)
+            # add the item to the item list
+            items.append(curr_item)
 
-    # close the file
-    file.close()
+        # close the file
+        file.close()
 
-    # save the data to the instance attribute
-    self.items = items
-
-    return items
+        return items
 
     # TODO: Add methods for loading location data and item data (see note above).
     def load_locations(self, location_data: TextIO) ->Location:
         """
         Save the location data for the world in the location_data attribute of this object as a
-
         """
+
+        # Tries to open the file
+        try:
+            file = open("locations.txt")
+        except FileNotFoundError:
+            print("The location file does not exist or is not in the right directory")
+            raise FileNotFoundError
+
+        # stores item objects
+        locations = []
+
+        # iterate through the file
+        line = file.readline()
+        while line:
+            # save each line to an item
+            location_data = line.split()
+
+            # create an item object
+            curr_item = Location(location_data[0], int(location_data[1]), int(location_data[2]), int(location_data[3]))
+
+            # add the item to the item list
+            items.append(curr_item)
+
+        # close the file
+        file.close()
+
+        return items
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
