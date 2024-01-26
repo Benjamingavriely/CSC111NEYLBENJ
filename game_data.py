@@ -151,9 +151,10 @@ class World:
 
     Instance Attributes:
         - map: a nested list representation of this world's map
-        - location_data:
-            Name of text file containing location data.
-        - items_data: name of text file containing item data
+        - locations:
+            List of locations in the map
+        - items:
+            List of all items
 
 
     Representation Invariants:
@@ -219,6 +220,42 @@ class World:
         self.map = map_list
 
         return map_list
+
+def load_items(self, item_data: TextIO) -> list[Item]:
+    """
+    This loads the items from the item file as an item object. It then saves them in the
+    items instance attribute and returns the list of items objects.
+    """
+    # Tries to open the file
+    try:
+        file = open("items.txt")
+    except FileNotFoundError:
+        print("The item file does not exist or is not in the right directory")
+        raise FileNotFoundError
+
+    # stores item objects
+    items = []
+
+    # iterate through the file
+    line = file.readline()
+    while line:
+        # save each line to an item
+        item_data = line.split()
+
+        # create an item object
+        curr_item = Item(item_data[0], int(item_data[1]), int(item_data[2]), int(item_data[3]))
+
+        # add the item to the item list
+        items.append(curr_item)
+
+    # close the file
+    file.close()
+
+    # save the data to the instance attribute
+    self.items = items
+
+    return items
+
     # TODO: Add methods for loading location data and item data (see note above).
     def load_locations(self, location_data: TextIO) ->Location:
         """
@@ -232,4 +269,7 @@ class World:
          return None.)
         """
 
-        # TODO: Complete this method as specified. Do not modify any of this function's specifications.
+        location_num = self.map[y][x]
+
+
+
