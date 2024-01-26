@@ -22,7 +22,7 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 from game_data import World, Item, Location, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
-
+#test
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
