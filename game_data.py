@@ -254,7 +254,7 @@ class World:
         return items
 
     # TODO: Add methods for loading location data and item data (see note above).
-    def load_locations(self, location_data: TextIO) ->Location:
+    def load_locations(self, location_data: TextIO) -> list[Location]:
         """
         Save the location data for the world in the location_data attribute of this object as a
         """
@@ -271,20 +271,22 @@ class World:
 
         # iterate through the file
         line = file.readline()
-        while line:
-            # save each line to an item
-            location_data = line.split()
+        while line != "END OF FILE":
+            # save the location number
+            loc_num = int(line.split()[1])
+            num_points = int(file.readline())
+            short_desc = file.readline()
+            long_desc = ""
+            while line != "END":
+                long_desc += line
+                file.readline()
+            locations.append(Location(loc_num, num_points, short_desc, long_desc))
 
-            # create an item object
-            curr_item = Location(location_data[0], int(location_data[1]), int(location_data[2]), int(location_data[3]))
-
-            # add the item to the item list
-            items.append(curr_item)
 
         # close the file
         file.close()
 
-        return items
+        return locations
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
