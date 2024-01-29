@@ -59,10 +59,7 @@ class Location:
         self.available_actions = available_actions
         self.points_for_visit = points
         self.available_items = items
-        if position != 1:
-            self.visited_before = False
-        else:
-            self.visited_before = True
+        self.visited_before = False
         # NOTES:
         # Data that could be associated with each Location object:
         # a position in the world map,
