@@ -34,17 +34,35 @@ class Location:
             A long description of the location. This will be displayed the first time a location is visited
         - available_actions:
             A list of available actions in this location
+        - points_for_visit
 
     Representation Invariants:
         - # TODO
     """
+    map_position: int
+    brief_description: str
+    long_description: str
+    available_actions: list[str]
+    available_items: list[Item]
+    points_for_visit: int
+    visited_before : bool
 
-    def __init__(self) -> None:
+    def __init__(self, position: int, brief: str, long: str, available_actions: list,
+                 points: int, items: list[Item], ) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
         """
-
+        self.map_position = position
+        self.brief_description = brief
+        self.long_description = long
+        self.available_actions = available_actions
+        self.points_for_visit = points
+        self.available_items = items
+        if position != 1:
+            self.visited_before = False
+        else:
+            self.visited_before = True
         # NOTES:
         # Data that could be associated with each Location object:
         # a position in the world map,
@@ -61,21 +79,6 @@ class Location:
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
 
-        # TODO: Complete this method
-
-    def available_actions(self):
-        """
-        Return the available actions in this location.
-        The actions should depend on the items available in the location
-        and the x,y position of this location on the world map.
-        """
-
-        # NOTE: This is just a suggested method
-        # i.e. You may remove/modify/rename this as you like, and complete the
-        # function header (e.g. add in parameters, complete the type contract) as needed
-
-        # TODO: Complete this method, if you'd like or remove/replace it if you're not using it
-
 
 class Item:
     """An item in our text adventure game world.
@@ -86,13 +89,16 @@ class Item:
         - start_position:
             The location of the item when the map is first loaded in. This is stored as the location
             number.
-        -
+        - target_position:
 
     Representation Invariants:
         - name != ''
         -
     """
-
+    name: str
+    start_position: int
+    target_position: int
+    target_points: int
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
         """Initialize a new item.
         """
@@ -160,6 +166,9 @@ class World:
     Representation Invariants:
         - # TODO
     """
+    map: list[list[int]]
+    locations: list[Location]
+    items: list[Item]
 
     def __init__(self, map_data: TextIO, location_data: TextIO, items_data: TextIO) -> None:
         """
@@ -180,7 +189,8 @@ class World:
 
         # The map MUST be stored in a nested list as described in the load_map() function's docstring below
         self.map = self.load_map(map_data)
-
+        self.locations = self.load_locations(location_data)
+        self.items = self.load_items(items_data)
         # NOTE: You may choose how to store location and item data; create your own World methods to handle these
         # accordingly. The only requirements:
         # 1. Make sure the Location class is used to represent each location.
@@ -199,25 +209,26 @@ class World:
         Return this list representation of the map.
         """
         # Tries to open the file
-        try:
-            file = open("map.txt")
-        except FileNotFoundError:
-            print("The map file does not exist or is not in the right directory")
-            raise FileNotFoundError
+        # try:
+        #    file = open("map.txt")
+        # except FileNotFoundError:
+        #    print("The map file does not exist or is not in the right directory")
+        #    raise FileNotFoundError
+
 
         # create a map that will hold the data
         map_list = []
         # iterate through the file
-        line = file.readline()
+        line = map_data.readline()
         while line:
             # save each line to a list
             map_list.append([int(x) for x in line.split()])
-            line = file.readline()
+            line = map_data.readline()
         # close the file
-        file.close()
+        map_data.close()
 
         # save the data to the instance attribute
-        self.map = map_list
+        # self.map = map_list
 
         return map_list
 
@@ -227,17 +238,17 @@ class World:
         items instance attribute and returns the list of items objects.
         """
         # Tries to open the file
-        try:
-            file = open("items.txt")
-        except FileNotFoundError:
-            print("The item file does not exist or is not in the right directory")
-            raise FileNotFoundError
+        # try:
+        #     file = open("items.txt")
+        # except FileNotFoundError:
+        #     print("The item file does not exist or is not in the right directory")
+        #     raise FileNotFoundError
 
         # stores item objects
         items = []
 
         # iterate through the file
-        line = file.readline()
+        line = item_data.readline()
         while line:
             # save each line to an item
             item_data = line.split()
@@ -249,7 +260,7 @@ class World:
             items.append(curr_item)
 
         # close the file
-        file.close()
+        item_data.close()
 
         return items
 
@@ -260,33 +271,33 @@ class World:
         """
 
         # Tries to open the file
-        try:
-            file = open("locations.txt")
-        except FileNotFoundError:
-            print("The location file does not exist or is not in the right directory")
-            raise FileNotFoundError
+        # try:
+        #     file = open("locations.txt")
+        # except FileNotFoundError:
+        #     print("The location file does not exist or is not in the right directory")
+        #     raise FileNotFoundError
 
         # stores item objects
         locations = []
 
         # iterate through the file
-        line = file.readline()
+        line = location_data.readline()
         while line != "END OF FILE":
             # save the location number
             loc_num = int(line.split()[1])
-            num_points = int(file.readline())
-            short_desc = file.readline()
+            num_points = int(location_data.readline())
+            short_desc = location_data.readline()
             long_desc = ""
             while line != "END":
                 long_desc += line
-                file.readline()
-            locations.append(Location(loc_num, num_points, short_desc, long_desc))
-
+                location_data.readline()
+            locations.append(Location(loc_num, short_desc, long_desc, qctions, num_points))
 
         # close the file
-        file.close()
+        location_data.close()
 
         return locations
+
     # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
@@ -295,6 +306,3 @@ class World:
         """
 
         location_num = self.map[y][x]
-
-
-
