@@ -309,3 +309,21 @@ class World:
         for location in self.locations:
             if location.map_position == location_num:
                 return location
+
+    def available_actions(self, x:int, y:int) -> list[str]:
+        """
+        This method will return a list of all available actions in a location
+        """
+        actions = []
+        # check cardinal directions
+
+        if len(self.map[0]) > x and self.map[x+1][y] != -1:
+            actions.append("Go East")
+        if x > 0 and self.map[x-1][y] != -1:
+            actions.append("Go West")
+        if len(self.map) > y and self.map[x][y + 1] != -1:
+            actions.append("Go South")
+        if y > 0 and self.map[x][y-1] != -1:
+            actions.append("Go North")
+
+        return actions
