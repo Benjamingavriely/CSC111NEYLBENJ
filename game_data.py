@@ -78,7 +78,6 @@ class Location:
         # All locations in your game MUST be represented as an instance of this class.
 
 
-
 class Item:
     """An item in our text adventure game world.
 
@@ -135,6 +134,11 @@ class Player:
         - x >= 0
         - y >= 0
     """
+    x: int
+    y: int
+    inventory: list[Item]
+    victory: bool
+    score: int
 
     def __init__(self, x: int, y: int) -> None:
         """
@@ -149,6 +153,7 @@ class Player:
         self.y = y
         self.inventory = []
         self.victory = False
+        self.score = 0
 
 
 class World:
@@ -324,24 +329,18 @@ class World:
         """
         actions = []
         # check cardinal directions CHANGE EVERYTHING CAUSE BENJ MESSED UP
-
-        if len(self.map[0]) > x and self.map[y+1][x] != -1:
-            actions.append("Go East")
-        if x > 0 and self.map[y-1][x] != -1:
-            actions.append("Go West")
-        if len(self.map) > y and self.map[y][x + 1] != -1:
-            actions.append("Go South")
-        if y > 0 and self.map[x][y-1] != -1:
+        if (x != 0) and self.map[]
             actions.append("Go North")
-
+        if
+            actions.append("Go South")
+        if
+            actions.append("Go East")
+        if
+            actions.append("Go West")
         # check if there are items here and if so, adding to actions taking the items
         for item in self.items:
             if item.current_position == self.map[y][x]:
                 actions.append("Take " + item.name)
 
-        # letting the player drop an item in the current position
-
-
+        actions.append("Drop an item")
         return actions
-
-
