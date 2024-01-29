@@ -26,20 +26,23 @@ from game_data import World, Item, Location, Player
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
-    p = Player(0, 0)  # set starting location of player; you may change the x, y coordinates here as appropriate
+    p = Player(0, 0)
 
     menu = ["look", "inventory", "score", "quit", "back"]
 
     while not p.victory:
         location = w.get_location(p.x, p.y)
 
-        # TODO: ENTER CODE HERE TO PRINT LOCATION DESCRIPTION
-        # Depending on whether or not it's been visited before,
-        # print either full description (first time visit) or brief description (every subsequent visit)
+        # print the long or short description
+        if location.visited_before:
+            print(location.brief_description)
+        else:
+            print(location.long_description)
+            location.visited_before = True
 
         print("What to do? \n")
         print("[menu]")
-        for action in location.available_actions():
+        for action in w.available_actions(p.x, p.y):
             print(action)
         choice = input("\nEnter action: ")
 
@@ -49,6 +52,15 @@ if __name__ == "__main__":
                 print(option)
             choice = input("\nChoose action: ")
 
+        if choice == "look":
+            print(location.long_description)
+
+        if choice == "inventory":
+            for item in p.inventory:
+                print(item)
+
+        if choice == "score":
+            print()
         # TODO: CALL A FUNCTION HERE TO HANDLE WHAT HAPPENS UPON THE PLAYER'S CHOICE
         #  REMEMBER: the location = w.get_location(p.x, p.y) at the top of this loop will update the location if
         #  the choice the player made was just a movement, so only updating player's position is enough to change the

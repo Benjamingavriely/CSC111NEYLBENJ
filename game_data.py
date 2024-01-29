@@ -44,7 +44,7 @@ class Location:
     long_description: str
     available_actions: list[str]
     points_for_visit: int
-    visited_before: bool
+    visited_before : bool
 
     def __init__(self, position: int, brief: str, long: str, available_actions: list,
                  points: int) -> None:
@@ -57,7 +57,10 @@ class Location:
         self.long_description = long
         self.available_actions = available_actions
         self.points_for_visit = points
-        self.visited_before = False
+        if position != 1:
+            self.visited_before = False
+        else:
+            self.visited_before = True
         # NOTES:
         # Data that could be associated with each Location object:
         # a position in the world map,
@@ -73,6 +76,7 @@ class Location:
         #
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
+
 
 
 class Item:
@@ -94,7 +98,6 @@ class Item:
     start_position: int
     target_position: int
     target_points: int
-    current_position: int
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
         """Initialize a new item.
         """
@@ -112,7 +115,6 @@ class Item:
         self.start_position = start
         self.target_position = target
         self.target_points = target_points
-        self.current_position = start
 
 
 class Player:
@@ -212,7 +214,6 @@ class World:
         #    print("The map file does not exist or is not in the right directory")
         #    raise FileNotFoundError
 
-
         # create a map that will hold the data
         map_list = []
         # iterate through the file
@@ -288,7 +289,7 @@ class World:
             while line != "END":
                 long_desc += line
                 location_data.readline()
-            locations.append(Location(loc_num, short_desc, long_desc, actions, num_points))
+            locations.append(Location(loc_num, short_desc, long_desc, qctions, num_points))
 
         # close the file
         location_data.close()
@@ -300,15 +301,16 @@ class World:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
-        Precondition :
-         TODOOOOOOOO
         """
+
         location_num = self.map[y][x]
-        if location_num == (-1):
-            return None
-        for location in self.locations:
-            if location.map_position == location_num:
-                return location
+
+
+
+
+
+
+
 
     def available_actions(self, x : int, y : int) -> list[str]:
         """
@@ -335,3 +337,5 @@ class World:
 
 
         return actions
+
+
