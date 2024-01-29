@@ -310,20 +310,28 @@ class World:
             if location.map_position == location_num:
                 return location
 
-    def available_actions(self, x:int, y:int) -> list[str]:
+    def available_actions(self, x : int, y : int) -> list[str]:
         """
         This method will return a list of all available actions in a location
         """
         actions = []
-        # check cardinal directions
+        # check cardinal directions CHANGE EVERYTHING CAUSE BENJ MESSED UP
 
-        if len(self.map[0]) > x and self.map[x+1][y] != -1:
+        if len(self.map[0]) > x and self.map[y+1][x] != -1:
             actions.append("Go East")
-        if x > 0 and self.map[x-1][y] != -1:
+        if x > 0 and self.map[y-1][x] != -1:
             actions.append("Go West")
-        if len(self.map) > y and self.map[x][y + 1] != -1:
+        if len(self.map) > y and self.map[y][x + 1] != -1:
             actions.append("Go South")
         if y > 0 and self.map[x][y-1] != -1:
             actions.append("Go North")
+
+        # check if there are items here and if so, adding to actions taking the items
+        for item in self.items:
+            if item.current_position == self.map[y][x]:
+                actions.append("Take " + item.name)
+
+        # letting the player drop an item in the current position
+
 
         return actions
