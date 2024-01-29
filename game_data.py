@@ -43,12 +43,11 @@ class Location:
     brief_description: str
     long_description: str
     available_actions: list[str]
-    available_items: list[Item]
     points_for_visit: int
-    visited_before : bool
+    visited_before: bool
 
     def __init__(self, position: int, brief: str, long: str, available_actions: list,
-                 points: int, items: list[Item], ) -> None:
+                 points: int) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -58,7 +57,6 @@ class Location:
         self.long_description = long
         self.available_actions = available_actions
         self.points_for_visit = points
-        self.available_items = items
         self.visited_before = False
         # NOTES:
         # Data that could be associated with each Location object:
@@ -96,6 +94,7 @@ class Item:
     start_position: int
     target_position: int
     target_points: int
+    current_position: int
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
         """Initialize a new item.
         """
@@ -113,6 +112,7 @@ class Item:
         self.start_position = start
         self.target_position = target
         self.target_points = target_points
+        self.current_position = start
 
 
 class Player:
@@ -288,7 +288,7 @@ class World:
             while line != "END":
                 long_desc += line
                 location_data.readline()
-            locations.append(Location(loc_num, short_desc, long_desc, qctions, num_points))
+            locations.append(Location(loc_num, short_desc, long_desc, actions, num_points))
 
         # close the file
         location_data.close()
@@ -300,6 +300,12 @@ class World:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
+        Precondition :
+         TODOOOOOOOO
         """
-
         location_num = self.map[y][x]
+        if location_num == (-1):
+            return None
+        for location in self.locations:
+            if location.map_position == location_num:
+                return location
