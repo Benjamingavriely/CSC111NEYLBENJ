@@ -43,11 +43,12 @@ class Location:
     brief_description: str
     long_description: str
     available_actions: list[str]
+    available_items: list[Item]
     points_for_visit: int
     visited_before : bool
 
     def __init__(self, position: int, brief: str, long: str, available_actions: list,
-                 points: int) -> None:
+                 points: int, items: list[Item], ) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -57,6 +58,7 @@ class Location:
         self.long_description = long
         self.available_actions = available_actions
         self.points_for_visit = points
+        self.available_items = items
         if position != 1:
             self.visited_before = False
         else:
@@ -76,7 +78,6 @@ class Location:
         #
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
-
 
 
 class Item:
@@ -214,6 +215,7 @@ class World:
         #    print("The map file does not exist or is not in the right directory")
         #    raise FileNotFoundError
 
+
         # create a map that will hold the data
         map_list = []
         # iterate through the file
@@ -304,30 +306,3 @@ class World:
         """
 
         location_num = self.map[y][x]
-
-
-
-
-
-
-
-
-    def available_actions(self, x:int, y:int) -> list[str]:
-        """
-        This method will return a list of all available actions in a location
-        """
-        actions = []
-        # check cardinal directions
-
-        if len(self.map[0]) > x and self.map[x+1][y] != -1:
-            actions.append("Go East")
-        if x > 0 and self.map[x-1][y] != -1:
-            actions.append("Go West")
-        if len(self.map) > y and self.map[x][y + 1] != -1:
-            actions.append("Go South")
-        if y > 0 and self.map[x][y-1] != -1:
-            actions.append("Go North")
-
-        return actions
-
-
