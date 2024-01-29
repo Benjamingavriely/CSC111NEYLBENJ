@@ -296,14 +296,20 @@ class World:
 
         return locations
 
-    # NOTE: The method below is REQUIRED. Complete it exactly as specified.
+   # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
+        Precondition :
+         TODOOOOOOOO
         """
-
         location_num = self.map[y][x]
+        if location_num == (-1):
+            return None
+        for location in self.locations:
+            if location.map_position == location_num:
+                return location
 
 
 
