@@ -78,7 +78,6 @@ class Location:
         # All locations in your game MUST be represented as an instance of this class.
 
 
-
 class Item:
     """An item in our text adventure game world.
 
@@ -98,6 +97,7 @@ class Item:
     start_position: int
     target_position: int
     target_points: int
+    current_position: int
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
         """Initialize a new item.
         """
@@ -115,6 +115,7 @@ class Item:
         self.start_position = start
         self.target_position = target
         self.target_points = target_points
+        self.current_position = start
 
 
 class Player:
@@ -135,6 +136,12 @@ class Player:
         - x >= 0
         - y >= 0
     """
+    x: int
+    y: int
+    inventory: list[Item]
+    victory: bool
+    score: int
+    num_moves : int
 
     def __init__(self, x: int, y: int) -> None:
         """
@@ -149,6 +156,8 @@ class Player:
         self.y = y
         self.inventory = []
         self.victory = False
+        self.score = 0
+        self.num_moves = 0
 
 
 class World:
@@ -311,37 +320,25 @@ class World:
             if location.map_position == location_num:
                 return location
 
-
-
-
-
-
-
-
-    def available_actions(self, x : int, y : int) -> list[str]:
+    def available_actions(self, x: int, y: int) -> list[str]:
         """
         This method will return a list of all available actions in a location
+        Representation Invariants:
+        - 0 <= x <= len(self.map[O])
+        - 0 <= y <= len(self.map)
         """
         actions = []
         # check cardinal directions CHANGE EVERYTHING CAUSE BENJ MESSED UP
-
-        if len(self.map[0]) > x and self.map[y+1][x] != -1:
-            actions.append("Go East")
-        if x > 0 and self.map[y-1][x] != -1:
-            actions.append("Go West")
-        if len(self.map) > y and self.map[y][x + 1] != -1:
-            actions.append("Go South")
-        if y > 0 and self.map[x][y-1] != -1:
+        if (y != 0) and (self.map[y-1][x] != (-1)):
             actions.append("Go North")
-
+        if (y != (len(self.map)-1)) and (self.map[y+1][x] != (-1)):
+            actions.append("Go South")
+        if (x != (len(self.map[0])-1)) and (self.map[y][x+1] != (-1)):
+            actions.append("Go East")
+        if (x != 0) and (self.map[y][x-1] != (-1)):
+            actions.append("Go West")
         # check if there are items here and if so, adding to actions taking the items
         for item in self.items:
             if item.current_position == self.map[y][x]:
                 actions.append("Take " + item.name)
-
-        # letting the player drop an item in the current position
-
-
         return actions
-
-
