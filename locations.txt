@@ -6,21 +6,114 @@ END
 
 LOCATION 1
 0
-You are on the first floor of the Robarts Library. There is an empty study room to the South, an exit from the library to the East.
-You are on the first floor of the Robarts Library. It's usually crowded at this time of the day, but today it's eerily quiet.
-Only a few students are studying inside one of the study rooms. You better not disturb them. A librarian stands near the
-service desk, looking bored and sleepy. There is an empty study room to the South, an exit from the library to the East.
+Welcome to Vobarts Library. Shttt ! Don't distub the students : go east for food court or south to leave this building.
+You are currently in the middle of the second floor room at Vobarts, TofU's biggest library. Everyone is watching you,
+completely lost as you just appeared here. Don't be scared, take a deep breath and tell yourself that these people are
+all NPCs. Whenever you feel enough courage to embrace this adventure, you can either enter the food court by the East,
+or just go South to leave this library full of dangerous people. In both cases, remember that you meticulously have to
+choose where to go in that game. Indeed, as far as I know, you are not Hulk or any other 9 feet giant with infinite
+stamina. Unfortunately, you will be limitated to 50 moves. Enough said, get ready for a crazy ride around Taranta !
 END
 
 LOCATION 2
-0
-This study room is completely empty.
-You are in an empty study room. And by empty, we mean, absolutely empty. All the tables and chairs have been taken out,
-the whiteboards taken off the wall, not even the carpeting is left. Are they planning to do something else with this space?
+20
+Already hungry ? Good because you are in the food court ! Go South to join Saint Andrew and Nuron streets intersection.
+I knew you were going to come here, what else can you do when you smell these delicious burritos ! Grab some, take a
+sit and enjoy this quick break. Don't stay here for too long tho, you can end up spending the entire day eating this
+amazing food right there. Whenever you finish your burrito, throw the paper in the trashcan and go South to join the
+Saint Andrew and Nuron streets intersection.
 END
 
-LOCATION 3
+LOCATION 6
 0
-You are outside the Robarts library.
-You are outside the Robarts library on a crowded street. There is a smell of coffee in the air.
+You are in front of Vobarts Library. Head toward the East to join Saint Andrew and Nuron streets intersection.
+You are right in front of the amazing Vobarts Library. Did you notice that the architect tried to imitate the shape of a
+Chicken when designing it ? The food trucs right next to you are unfortunately closed, you will have to walk a bit on
+towards the East to join Saint Andrew and Nuron streets intersection. Be careful with the red lights, many cars often
+go way over the speed limit.
+END
+
+LOCATION 7
+10
+Nuron and Saint Andrews street intersect here! Follow the south to go to Melbourne Smith or East for Quadrity College.
+**Vrrrrroooooooommmm**, wow that was close ! You almost got hit by a car but you will eventually get used to this
+adrenaline if you always come here. The sky is getting dark because of the clouds... Do not stay here or you will
+probably get lost in the giant TofU campus. You can either go South towards Melbourne Smith, a Science and Arts faculty
+building, or go East to join the super old Quadrity College on Nuron Street. If I were you, I would probably have chose
+East as the lights are brighter than sun light but who am I after all ? Why would you listen to my advices ?
+END
+
+LOCATION 8
+0
+You are currently in front of Quadrity College. Go South to go to front campus fields or East to join King's Park.
+Quadrity College, some say that you can find ghosts and witches in that building! Thankfully, Quadrity is closed this
+week for the exams. I would have never adventured myself inside that scary building depite it being beautiful. After
+taking all your time to admire that edifice, you will either go South in what's front campus or keep going East towards
+King's Park.
+END
+
+LOCATION 9
+10
+Welcome to King's Park! You can either go North to see VictoriaSecret College or South for Einstein library.
+Kings'park, I wish you were here in September, that time when the sky was still blue... However, you will still enjoy a
+super cozy walk in that incredible landscape surrounded by some small hairy and creepy friends : squirrels. Do not try
+to feed them ! Even though they look cute, some of them are dangerous and can bite! Once you will have completed a full
+tour of that park, you can either go North to see VictoriaSecret College or South for Einstein library. Remember where
+is this park because trust me, you will want to come back.
+END
+
+LOCATION 4
+10
+This is VictoriaSecret College ! If you want to enter the building, you will find a small door on the East direction.
+Stunned is probably the word that would best describe your feelings in front of that dazzling building ! At first, I
+thought it looked like a cartoon or a sort of bakery. Do not spend too much time staring at this building, you have to
+sit an exam soon and you can't be late. It is getting dark, if I were you, I would not waste my time entering here.
+What else do you expect to find apart from some old books ? But again, why would you even trust me...
+END
+
+LOCATION 5
+40
+You are inside VictoriaSecret College, you can leave by the first exit on the West.
+You are inside VictoriaSecret College, the perfect place to chill out after your exam tonight. Take a look at that
+chandelier right above your head, isn't it amazing ? I don't know when and how did they hang it up there but the only
+thing I can be sure about is that at that pace, you will probably miss your exam. You have to move quicker ! You will
+find the exit door right behind you, in the West side.
+END
+
+LOCATION 12
+10
+Here is Melbourne Smith building. Go South to get to the TofUBookStore or go East to visit CollegeUniversity.
+You just arrived to Melbourne Smith building. This is where you had some of your math classes and were taking notes
+thanks to your pencil (eye wink). For the exam you will sit tonight, I hope this will give you memories about all the
+concepts you learnt here. Do you remember all the cookies you got from ThirdCup in Melbourne Smith's hall ? Do not get
+lost in the corridors, a lot of people find themselves desoriented by that maze. If you really want to, have a look
+around and then head towards South if you want to go to the TofU's Bookstore or go East to join CollegeUniversity.
+END
+
+LOCATION 17
+10
+Welcome to TofU's Bookstore ! You better go back North as the only other option is to go up by the West door.
+Welcome to TofU's Bookstore ! Here, you can find more books and TofU's Merch as well as all the textbooks you obviously
+scrutinized to prepare for the exam of tonight. Don't forget to buy TofU's hoodies for your friends, they will love it !
+*strange noise*... Did you hear this ? This was coming from the West door. Some rumors say that a monster is living in
+the BookStore ! If I were you I would not adventure myself, we never know what can happen ! You can leave by the same
+door you entered, in the North. But again, why would you even listen to my advices ? Some monsters can be nice...
+END
+
+LOCATION 16
+20
+You are on TofU's Rooftop. Hop in the helicopter that can take you to the South or go back downstairs by the East door.
+You made it on top of the Bookstore ! The noises were in fact a helicopter landing on the building. Oh look ! The pilot
+seems to be calling you ! He is saying that he has a nice gift for you. Remember what your parents told you... Never say
+yes to strangers... Is it finally time to make an exception to this rule ? Who would not want a free helicopter ride
+above Taranta ? If you feel ready to embrace that adventure, go South to enter the helicopter. If you are scared to be
+late for tonight's exam, feel free to go back by the East door. Take the right decision because exactly like the
+helicopter, time is flying...
+
+LOCATION 21
+500
+You are on top of the PN Tower ! Drake is sitting right there and has a special surprise for you !
+You just landed on the tallest building of North America : the PN Tower ! Strangers sometimes have nice surprises for
+you! *Someone is shouting your name*... Look who is sitting right there ! It's Taranta most famous singer, Drake !
+Take a selfie with him and tell him about your exam tonight, he might be able to help you...
 END

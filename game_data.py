@@ -44,7 +44,7 @@ class Location:
     long_description: str
     available_actions: list[str]
     points_for_visit: int
-    visited_before : bool
+    visited_before: bool
 
     def __init__(self, position: int, brief: str, long: str, available_actions: list,
                  points: int) -> None:
@@ -76,7 +76,6 @@ class Location:
         #
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
-
 
 class Item:
     """An item in our text adventure game world.
