@@ -42,11 +42,10 @@ class Location:
     map_position: int
     brief_description: str
     long_description: str
-    available_actions: list[str]
     points_for_visit: int
     visited_before: bool
 
-    def __init__(self, position: int, brief: str, long: str, available_actions: list,
+    def __init__(self, position: int, brief: str, long: str,
                  points: int) -> None:
         """Initialize a new location.
 
@@ -55,12 +54,8 @@ class Location:
         self.map_position = position
         self.brief_description = brief
         self.long_description = long
-        self.available_actions = available_actions
         self.points_for_visit = points
-        if position != 1:
-            self.visited_before = False
-        else:
-            self.visited_before = True
+        self.visited_before = False
         # NOTES:
         # Data that could be associated with each Location object:
         # a position in the world map,
@@ -254,17 +249,17 @@ class World:
         items = []
 
         # iterate through the file
-        line = item_data.readline()
+        line = item_data.readline().strip()
         while line:
             # save each line to an item
-            item_data = line.split()
+            item_line = line.split()
 
             # create an item object
-            curr_item = Item(item_data[0], int(item_data[1]), int(item_data[2]), int(item_data[3]))
+            curr_item = Item(item_line[0], int(item_line[1]), int(item_line[2]), int(item_line[3]))
 
             # add the item to the item list
             items.append(curr_item)
-
+            line = item_data.readline().strip()
         # close the file
         item_data.close()
 
@@ -276,28 +271,26 @@ class World:
         Save the location data for the world in the location_data attribute of this object as a
         """
 
-        # Tries to open the file
-        # try:
-        #     file = open("locations.txt")
-        # except FileNotFoundError:
-        #     print("The location file does not exist or is not in the right directory")
-        #     raise FileNotFoundError
-
         # stores item objects
         locations = []
 
         # iterate through the file
-        line = location_data.readline()
+        line = location_data.readline().strip()
         while line != "END OF FILE":
             # save the location number
             loc_num = int(line.split()[1])
-            num_points = int(location_data.readline())
-            short_desc = location_data.readline()
+            line = location_data.readline().strip()
+            num_points = int(line)
+            line = location_data.readline().strip()
+            short_desc = line
+            line = location_data.readline().strip()
             long_desc = ""
             while line != "END":
-                long_desc += line
-                location_data.readline()
-            locations.append(Location(loc_num, short_desc, long_desc, qctions, num_points))
+                long_desc += line + "\n"
+                line = location_data.readline().strip()
+            locations.append(Location(loc_num, short_desc, long_desc, num_points))
+            line = location_data.readline()
+            line = location_data.readline().strip()
 
         # close the file
         location_data.close()
@@ -368,4 +361,3 @@ class pn_tower(Location):
             self.visited_before = False
         else:
             self.visited_before = True
-    def success(self, ):
