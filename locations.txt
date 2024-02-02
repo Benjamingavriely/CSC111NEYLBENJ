@@ -109,6 +109,7 @@ yes to strangers... Is it finally time to make an exception to this rule ? Who w
 above Taranta ? If you feel ready to embrace that adventure, go South to enter the helicopter. If you are scared to be
 late for tonight's exam, feel free to go back by the East door. Take the right decision because exactly like the
 helicopter, time is flying...
+END
 
 LOCATION 21
 500

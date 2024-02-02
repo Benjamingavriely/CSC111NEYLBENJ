@@ -86,11 +86,9 @@ class pn_tower(Location):
     map_position: int
     brief_description: str
     long_description: str
-    available_actions: list[str]
     points_for_visit: int
     visited_before: bool
-    def __init__(self, position: int, brief: str, long: str, available_actions: list,
-                 points: int) -> None:
+    def __init__(self, position: int, brief: str, long: str, points: int) -> None:
         """Initialize a new location.
 
         # TODO Add more details here about the initialization if needed
@@ -98,7 +96,6 @@ class pn_tower(Location):
         self.map_position = position
         self.brief_description = brief
         self.long_description = long
-        self.available_actions = available_actions
         self.points_for_visit = points
         if position != 1:
             self.visited_before = False
@@ -321,7 +318,10 @@ class World:
             while line != "END":
                 long_desc += line + "\n"
                 line = location_data.readline().strip()
-            locations.append(Location(loc_num, short_desc, long_desc, num_points))
+            if loc_num == 21 :
+                locations.append(pn_tower(loc_num, short_desc, long_desc, num_points))
+            else:
+                locations.append(Location(loc_num, short_desc, long_desc, num_points))
             line = location_data.readline()
             line = location_data.readline().strip()
 
