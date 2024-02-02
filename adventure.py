@@ -22,7 +22,6 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 from game_data import World, Item, Location, Player
 
 # Note: You may add helper functions, classes, etc. here as needed
-#test
 # Note: You may modify the code below as needed; the following starter template are just suggestions
 if __name__ == "__main__":
     w = World(open("map.txt"), open("locations.txt"), open("items.txt"))
@@ -64,37 +63,28 @@ if __name__ == "__main__":
         choice = input("\nEnter action: ")
 
         if choice == "[menu]":
-            print("Menu Options: \n")
-            for option in menu:
-                print(option)
-            choice = input("\nChoose action: ")
+            while choice != "back":
+                print("Menu Options: \n")
+                for option in menu:
+                    print(option)
+                choice = input("\nChoose action: ")
+                if choice == "look":
+                    print(location.long_description)
+                if choice == "inventory":
+                    for item in p.inventory:
+                        print(item)
+                    print("'Drop' + item to drop an item")
+                    choice = input()
+                    # allow the user to drop items
+                    for item in p.inventory:
+                        if choice == "Drop" + item.name:
+                            p.inventory.remove(item)
+                            item.current_position = location.map_position
+                if choice == "score":
+                    print(p.score)
+                if choice == "quit":
+                    exit()
 
-        if choice == "look":
-            print(location.long_description)
-
-        if choice == "inventory":
-            for item in p.inventory:
-                print(item)
-            print("'Drop' + item to drop an item")
-            print("Back to return to actions")
-            choice = input()
-            if choice == "Back":
-                continue
-
-            # allow the user to drop items
-            for item in p.inventory:
-                if choice == "Drop" + item.name:
-                    p.inventory.remove(item)
-                    item.current_position = location.map_position
-
-        if choice == "score":
-            print(p.score)
-
-        if choice == "quit":
-            break
-
-        if choice == "back":
-            continue
 
         if choice == "Go East":
             # change the player's x coordinate

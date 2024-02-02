@@ -346,7 +346,7 @@ class World:
                 if isinstance(location, pn_tower):
                     pygame.mixer.music.load("drake.mp3")
                     pygame.mixer_music.play(-1, 0.0, 0)
-                    return location
+                return location
 
     def available_actions(self, x: int, y: int) -> list[str]:
         """
