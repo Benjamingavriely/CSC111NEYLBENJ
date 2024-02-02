@@ -45,7 +45,7 @@ END
 
 LOCATION 8
 0
-You are currently in front of Quadrity College. Go South to go to front campus fields or East to join King's Park.
+You are currently in front of Quadrity College. Go South to go to CollegeUniversity or East to join King's Park.
 Quadrity College, some say that you can find ghosts and witches in that building! Thankfully, Quadrity is closed this
 week for the exams. I would have never adventured myself inside that scary building depite it being beautiful. After
 taking all your time to admire that edifice, you will either go South in what's front campus or keep going East towards
@@ -117,3 +117,73 @@ You just landed on the tallest building of North America : the PN Tower ! Strang
 you! *Someone is shouting your name*... Look who is sitting right there ! It's Taranta most famous singer, Drake !
 Take a selfie with him and tell him about your exam tonight, he might be able to help you...
 END
+
+LOCATION 13
+20
+You re in CollegeUniversity : the middle of TofU campus ! Einstein Library is on the East, Quadrity College on North.
+What an amazing view ! You re walking on the big garden of CollegeUniversity, in the very middle of TofU's Campus !
+Unfortunately, you can't go South because of the fences but you can still see the beautiful PN tower in the background.
+Oh look ! The snow did not completely melt. Why don't you build a snowman ? Well the answer is because you have an exam
+tonight ! Make sure you don't waste too much time enjoying here or you will be late for your test. Here ! you can see
+Einstein Library on the East, that library where you spent so much time studying ! But look on the North, it's one of
+the most iconic building at TofU : Quadrity College. You can still go West to join Melbourne Smith building. If you ever
+ decide to go West, be careful if you head towards South after : I heard people talking about a monster around there...
+Where are you deciding to go ? I would personnaly not recommend to go West but again, you are the one to decide.
+END
+
+LOCATION 14
+40
+You are in Einstein Library ! Go north to join King's Park, South for Health building and West for Legislative Assembly.
+Be quiet ! You re inside Einstein Library. I heard this sit right there was where the famous formule e = mc**2 was found
+, can you believe this ? I personally don't. However, I know you were always sitting in that exact place to study for
+tonight's exam. I hope that all these hours of trying so hard are going to be awarded. The lights are already turned off
+ in Einstein Library ! It might be time to speed things up a little bit more. Go West if you want to see the Legislative
+ Assembly building, South for Health building and North for a quick walk through King's Park.
+END
+
+LOCATION 15
+0
+Welcome to the Leglisative Assembly building ! To go back in TofU's campus, you can only go by the path on the West.
+Welcome to the Leglisative Assembly building ! This is probably one of the best looking buildings in all Taranta but
+unfortunately, you have to be wearing suits to be able to enter in. You don't need anything here since this building is
+made for those who already graduated. Because you are still an undergraduate, you don't want to fail your degree so you
+better be at time for that exam ! Take a quick selfie with that marvelous building then go back to TofU by the West.
+END
+
+LOCATION 19
+20
+Need some medicine ? Welcome to the Health building ! Go South to join the exam center or North to go back to Einstein.
+*bipboup* Oops s'cuze me doctor ! You re right inside the Health building at TofU. This is where all the life science
+projects are getting achieved. Did you know that the insuline was discovered at TofU ? Isn't that crazy ? You can use
+the elevators right there to have a quick look around the 6 levels of that building, you will really enjou the tour !
+But you have to go quicker ! The exam will start soon. To go to the exam center, go South even though you might not have
+ your exam there. To go back to Einstein Library, just leave by the North exit.
+END
+
+LOCATION 24
+30
+Oh no ! You are in the exam center !! Go West to enter an exam room or leave by the North exit.
+I know this building is not your favorite one at TofU but here you are in the exam center... Do you remember the CSC110
+exam you failed here because you did not know how to analyze the run time of a function ? I m sure you are currenyly
+having some amazing memories ! The exam center seems to be quite empty today. Is everyone sitting an exam or are they
+already done ? You can figure this out by either entering one of the exam room in the West or you can just leave by the
+North.
+END
+
+LOCATION 23
+10
+Ready to sit the exam? Everyone is waiting for you... Are you sure you brought everything you need for the test.
+Ready to sit the exam? Everyone is waiting for you... Are you sure you brought everything you need for the test. Double
+ check all your stuff in your bagpack. You must have forgot something around campus. Go grab that quickly, the T.A told
+ you that you still have a bit of time before you start writing your exam. Come on, leave by the door in the East and
+ speed up !
+END
+
+LOCATION 25
+0
+You just entered an empty room where there only is one chair. You can leave by the West door.
+You are currently in the most useless room in TofU. There is nothing else than a poor rusty chair. Who even got the idea
+ to put this chair here ? Some questions will remain forever unanswered... You can leave whenever you want by the door
+in the West.
+END
+END OF FILE
