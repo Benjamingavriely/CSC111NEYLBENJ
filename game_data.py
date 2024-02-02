@@ -341,3 +341,31 @@ class World:
             if item.current_position == self.map[y][x]:
                 actions.append("Take " + item.name)
         return actions
+
+class pn_tower(Location):
+    """
+    Inherits from Location
+    """
+    map_position: int
+    brief_description: str
+    long_description: str
+    available_actions: list[str]
+    points_for_visit: int
+    visited_before: bool
+    player : Player
+    def __init__(self, position: int, brief: str, long: str, available_actions: list,
+                 points: int) -> None:
+        """Initialize a new location.
+
+        # TODO Add more details here about the initialization if needed
+        """
+        self.map_position = position
+        self.brief_description = brief
+        self.long_description = long
+        self.available_actions = available_actions
+        self.points_for_visit = points
+        if position != 1:
+            self.visited_before = False
+        else:
+            self.visited_before = True
+    def success(self, ):

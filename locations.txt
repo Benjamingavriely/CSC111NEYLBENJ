@@ -186,4 +186,5 @@ You are currently in the most useless room in TofU. There is nothing else than a
  to put this chair here ? Some questions will remain forever unanswered... You can leave whenever you want by the door
 in the West.
 END
+
 END OF FILE
