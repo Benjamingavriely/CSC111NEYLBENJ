@@ -20,7 +20,14 @@ This file is Copyright (c) 2024 CSC111 Teaching Team
 """
 from typing import Optional, TextIO
 
+import pygame.mixer
+from pygame import mixer
 
+pygame.mixer.pre_init(44100, -16, 2, 512)
+mixer.init()
+
+pygame.mixer.music.load("background.mp3")
+pygame.mixer_music.play(-1, 0.0, 0)
 class Location:
     """A location in our text adventure game world.
 
@@ -76,6 +83,32 @@ class Location:
         #
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
+
+class pn_tower(Location):
+    """
+    Inherits from Location
+    """
+    map_position: int
+    brief_description: str
+    long_description: str
+    available_actions: list[str]
+    points_for_visit: int
+    visited_before: bool
+    def __init__(self, position: int, brief: str, long: str, available_actions: list,
+                 points: int) -> None:
+        """Initialize a new location.
+
+        # TODO Add more details here about the initialization if needed
+        """
+        self.map_position = position
+        self.brief_description = brief
+        self.long_description = long
+        self.available_actions = available_actions
+        self.points_for_visit = points
+        if position != 1:
+            self.visited_before = False
+        else:
+            self.visited_before = True
 
 class Item:
     """An item in our text adventure game world.
@@ -317,7 +350,10 @@ class World:
             return None
         for location in self.locations:
             if location.map_position == location_num:
-                return location
+                if isinstance(location, pn_tower):
+                    pygame.mixer.music.load("drake.mp3")
+                    pygame.mixer_music.play(-1, 0.0, 0)
+                    return location
 
     def available_actions(self, x: int, y: int) -> list[str]:
         """
@@ -341,31 +377,3 @@ class World:
             if item.current_position == self.map[y][x]:
                 actions.append("Take " + item.name)
         return actions
-
-class pn_tower(Location):
-    """
-    Inherits from Location
-    """
-    map_position: int
-    brief_description: str
-    long_description: str
-    available_actions: list[str]
-    points_for_visit: int
-    visited_before: bool
-    player : Player
-    def __init__(self, position: int, brief: str, long: str, available_actions: list,
-                 points: int) -> None:
-        """Initialize a new location.
-
-        # TODO Add more details here about the initialization if needed
-        """
-        self.map_position = position
-        self.brief_description = brief
-        self.long_description = long
-        self.available_actions = available_actions
-        self.points_for_visit = points
-        if position != 1:
-            self.visited_before = False
-        else:
-            self.visited_before = True
-    def success(self, ):
