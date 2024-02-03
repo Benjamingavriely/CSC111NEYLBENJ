@@ -42,12 +42,15 @@ if __name__ == "__main__":
 
         # win conditions
         # if you reach the final destination with all of the items
-        if location == 23 and len(p.inventory) != len(w.items):
+        if location.map_position == 23 and len(p.inventory) != len(w.items):
             print("You do not have all of the items, so you cannot write the exam!")
-        elif location == 23:
-            print("Congratulations! You have collected all of the items and are ready to write the final exam!")
-            print("You forgot to study and barely passed the course. Your career prospects dwindle and"
-                  "you become an unsuccessful rapper. At least you passed")
+        elif location.map_position == 23:
+            choice = ''
+            while choice != "Write the exam":
+                choice = input("\nWrite the exam\n\n Enter action here:")
+            print("\nCongratulations! You have collected all of the items and are ready to write the final exam!")
+            print("\nYou forgot to study and barely passed the course. Your career prospects dwindle and"
+                  "\nyou become an unsuccessful rapper. At least you passed")
             print("\nCongratulations! You have won! \n Score " + str(p.score))
             p.victory = True
 
@@ -56,7 +59,7 @@ if __name__ == "__main__":
                 print("\nactions:")
                 choice = input("Take a selfie\n")
             print("CLICK!")
-            while choice != "Tell Drake about my exam":
+            while choice != "Tell Drake about my exam" and choice != "I have an exam":
                 print("\nactions:")
                 choice = input("\nTell Drake about my exam\n")
 
@@ -65,7 +68,7 @@ if __name__ == "__main__":
                   "\nTake a deep breath, focus up, and give it your all."
                   "\nIt's all about the journey, not just the destination. You got this,"
                   "\nkeep pushing through, and remember, 'started from the bottom, now we here.' 🙌💯")
-            while choice != "Thank him for his kind words":
+            while "Thank you" not in choice:
                 print("\nactions:")
                 choice = input("Thank him for his kind words.\n")
             print("Drake personally helicopters you out to the exam center")
