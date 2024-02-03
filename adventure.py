@@ -71,29 +71,29 @@ if __name__ == "__main__":
             print("Drake personally helicopters you out to the exam center")
             choice = input("Press enter to continue from now on.\n")
             print("\n*Landing on top of the Health Science building* \n")
-            choice = input()
+            input()
             print("Drake: What a ride, huh? It really makes you appreciate our city.\n")
-            choice = input()
+            input()
             print("Drake: Listen,After an adventure like what you just had,\n "
                   "my gut tells me that you're not meant for this CS thing.\n")
-            choice = input()
+            input()
             print("Drake: I think you're destined for something greater. Something more noble. \n"
                   "So, I want to personally tell Sadia that you will not be writing this exam,\n"
                   "And STARTING TODAY, I want to sign you as the CEO of OVO.\n")
-            choice = input()
+            input()
             print("*LOUD GRUMBLE*")
-            choice = input()
+            input()
             print(" \n*Drake blushes*\n")
-            choice = input()
+            input()
             print("Drake: Yo, my people, it's been real, but your boy Drake's gotta bounce for a minute."
                   "\nThe hunger's hitting hard, and I'm on a mission – gotta satisfy that craving, you know?")
-            choice = input()
+            input()
             print("\nDrake: It's poutine time, and I can't keep the fries waiting."
                   "\nSo, I'm signing off for now, but catch me on the flip side."
-                  "\nIf you see me at the poutine spot, slide through – we')ll vibe over some fries,"
+                  "\nIf you see me at the poutine spot, slide through – we'll vibe over some fries,"
                   "\ncheese curds, and gravy."
                   "\nUntil then, stay blessed, stay hungry, and we'll rendezvous on the other side. OVO, out. ✌️🍟")
-            choice = input("Press enter to continue\n")
+            input("Press enter to continue\n")
             print("\nCongratulations! You have won! \n Score: " + str(p.score))
             p.victory = True
 
