@@ -111,7 +111,7 @@ if __name__ == "__main__":
         elif p.num_moves == 50:
             print("You have no moves left :(")
             print("Game over.")
-            break
+            exit()
 
         if p.victory:
             break
