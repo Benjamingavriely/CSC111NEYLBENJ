@@ -39,10 +39,10 @@ if __name__ == "__main__":
             print(location.long_description)
             p.score += location.points_for_visit
             location.visited_before = True
-
         # win conditions
         # if you reach the final destination with all of the items
-        if location.map_position == 23 and len(p.inventory) != len(w.items):
+        if (location.map_position == 23) and (not all([(item.current_position == 23)
+                                                       or (item.current_position == 0) for item in w.items])):
             print("You do not have all of the items, so you cannot write the exam!")
         elif location.map_position == 23:
             choice = ''
@@ -147,6 +147,9 @@ if __name__ == "__main__":
                             for item in p.inventory:
                                 if choice == "Drop " + item.name:
                                     p.inventory.remove(item)
+                                    if item.target_position == location.map_position:
+                                        p.score += item.target_points
+                                        item.target_points = 0
                                     item.current_position = location.map_position
 
                         if choice == "score":

@@ -39,12 +39,17 @@ class Location:
             visited after the first time
         - long_description:
             A long description of the location. This will be displayed the first time a location is visited
-        - available_actions:
-            A list of available actions in this location
-        - points_for_visit
+        - points_for_visit :
+            The number of points obtained when visiting this location for the first time.
+        - visted_before :
+            Wheither this location has been visited before.
 
     Representation Invariants:
-        - # TODO
+        - (-1 <= self.map_position <= 25) and (self.map_position != 0)
+        - len(self.brief_description) < len(self.long_description)
+        - self.brief_description != ""
+        - points_for_visit >= 0
+
     """
     map_position: int
     brief_description: str
@@ -52,11 +57,8 @@ class Location:
     points_for_visit: int
     visited_before: bool
 
-    def __init__(self, position: int, brief: str, long: str,
-                 points: int) -> None:
+    def __init__(self, position: int, brief: str, long: str, points: int) -> None:
         """Initialize a new location.
-
-        # TODO Add more details here about the initialization if needed
         """
         self.map_position = position
         self.brief_description = brief
@@ -81,7 +83,7 @@ class Location:
 
 class pn_tower(Location):
     """
-    Inherits from Location
+    A class that inherits from Location made to distinguish between the PN tower and the other locations.
     """
     map_position: int
     brief_description: str
@@ -90,8 +92,6 @@ class pn_tower(Location):
     visited_before: bool
     def __init__(self, position: int, brief: str, long: str, points: int) -> None:
         """Initialize a new location.
-
-        # TODO Add more details here about the initialization if needed
         """
         self.map_position = position
         self.brief_description = brief
@@ -112,10 +112,20 @@ class Item:
             The location of the item when the map is first loaded in. This is stored as the location
             number.
         - target_position:
+            The location number where the item has to be dropped to progress in the game. This is stored as the
+            location number.
+        - target_points:
+            The points earned when dropping the item in a target_position location.
+        - current_position:
+            The current location number of the item, 0 if the item is in the inventory of the player.
 
     Representation Invariants:
-        - name != ''
-        -
+        - self.name != ""
+        - self.start_position > 0
+        - self.current_position >= 0
+        - self.target_position > 0
+        - self.target_points >= 0
+
     """
     name: str
     start_position: int
@@ -149,16 +159,22 @@ class Player:
     Instance Attributes:
         - x:
             The player's x position
-        -  y:
+        - y:
             The player's y position
-        -  inventory:
+        - inventory:
             The player's items stored in a list
         - victory:
             Boolean storing whether the player has won.
+        - score:
+            The player's score
+        - num_moves:
+            The number of moves the player completed since the beginning
 
     Representation Invariants:
         - x >= 0
         - y >= 0
+        - score >= 0
+        - 0 <= num_moves <= 51
     """
     x: int
     y: int
@@ -192,11 +208,14 @@ class World:
         - locations:
             List of locations in the map
         - items:
-            List of all items
+            List of all items in the map
 
 
     Representation Invariants:
-        - # TODO
+        - len(self.map) != 0
+        - len(self.map) == len(self.map[0])
+        - self.items != []
+        - self.locations != []
     """
     map: list[list[int]]
     locations: list[Location]
@@ -295,10 +314,9 @@ class World:
 
         return items
 
-    # TODO: Add methods for loading location data and item data (see note above).
     def load_locations(self, location_data: TextIO) -> list[Location]:
         """
-        Save the location data for the world in the location_data attribute of this object as a
+        Save the location data for the world in the location_data attribute of this object as a list of Locations
         """
 
         # stores item objects
@@ -336,7 +354,9 @@ class World:
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
          return None.)
         Precondition :
-         TODOOOOOOOO
+         - 0 <= x <= len(self.map[0])
+         - 0 <= y <= len(self.map)
+         - any(self.map[y][x] == location.map_position for location in self.locations)
         """
         location_num = self.map[y][x]
         if location_num == (-1):
@@ -351,7 +371,7 @@ class World:
     def available_actions(self, x: int, y: int) -> list[str]:
         """
         This method will return a list of all available actions in a location
-        Representation Invariants:
+        Preconditions:
         - 0 <= x <= len(self.map[O])
         - 0 <= y <= len(self.map)
         """
