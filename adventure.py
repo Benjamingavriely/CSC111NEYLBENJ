@@ -46,6 +46,8 @@ if __name__ == "__main__":
             print("You do not have all of the items, so you cannot write the exam!")
         elif location.map_position == 23:
             choice = ''
+            for item in w.items:
+                p.score += item.target_points
             while choice != "Write the exam":
                 choice = input("\nWrite the exam\n\n Enter action here:")
             print("\nCongratulations! You have collected all of the items and are ready to write the final exam!")

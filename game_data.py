@@ -105,9 +105,8 @@ class pn_tower(Location):
         """
         A method that changes the music if the player is in the pn_tower
         """
-        if self.visited_before:
-            pygame.mixer.music.load("drake.mp3")
-            pygame.mixer_music.play(-1, 0.0, 0)
+        pygame.mixer.music.load("drake.mp3")
+        pygame.mixer_music.play(-1, 0.0, 0)
 
 class Item:
     """An item in our text adventure game world.
