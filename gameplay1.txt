@@ -1,0 +1,21 @@
+Go East
+Go South
+Go South
+Go South
+Go West
+[menu]
+score
+back
+Go South
+Take a selfie
+I have an exam
+Thank you drizzy Drake
+
+
+
+
+
+
+
+
+

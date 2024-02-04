@@ -28,6 +28,8 @@ mixer.init()
 
 pygame.mixer.music.load("background.mp3")
 pygame.mixer_music.play(-1, 0.0, 0)
+
+
 class Location:
     """A location in our text adventure game world.
 
@@ -81,6 +83,7 @@ class Location:
         # The only thing you must NOT change is the name of this class: Location.
         # All locations in your game MUST be represented as an instance of this class.
 
+
 class pn_tower(Location):
     """
     A class that inherits from Location made to distinguish between the PN tower and the other locations.
@@ -90,6 +93,7 @@ class pn_tower(Location):
     long_description: str
     points_for_visit: int
     visited_before: bool
+
     def __init__(self, position: int, brief: str, long: str, points: int) -> None:
         """Initialize a new location.
         """
@@ -107,6 +111,7 @@ class pn_tower(Location):
         """
         pygame.mixer.music.load("drake.mp3")
         pygame.mixer_music.play(-1, 0.0, 0)
+
 
 class Item:
     """An item in our text adventure game world.
@@ -138,6 +143,7 @@ class Item:
     target_position: int
     target_points: int
     current_position: int
+
     def __init__(self, name: str, start: int, target: int, target_points: int) -> None:
         """Initialize a new item.
         """
@@ -180,14 +186,14 @@ class Player:
         - x >= 0
         - y >= 0
         - score >= 0
-        - 0 <= num_moves <= 51
+        - 0 <= num_moves <= 31
     """
     x: int
     y: int
     inventory: list[Item]
     victory: bool
     score: int
-    num_moves : int
+    num_moves: int
 
     def __init__(self, x: int, y: int) -> None:
         """
@@ -342,7 +348,7 @@ class World:
             while line != "END":
                 long_desc += line + "\n"
                 line = location_data.readline().strip()
-            if loc_num == 21 :
+            if loc_num == 21:
                 locations.append(pn_tower(loc_num, short_desc, long_desc, num_points))
             else:
                 locations.append(Location(loc_num, short_desc, long_desc, num_points))
@@ -354,7 +360,7 @@ class World:
 
         return locations
 
-   # NOTE: The method below is REQUIRED. Complete it exactly as specified.
+    # NOTE: The method below is REQUIRED. Complete it exactly as specified.
     def get_location(self, x: int, y: int) -> Optional[Location]:
         """Return Location object associated with the coordinates (x, y) in the world map, if a valid location exists at
          that position. Otherwise, return None. (Remember, locations represented by the number -1 on the map should
@@ -382,13 +388,13 @@ class World:
         """
         actions = []
         # check cardinal directions CHANGE EVERYTHING CAUSE BENJ MESSED UP
-        if (y != 0) and (self.map[y-1][x] != (-1)):
+        if (y != 0) and (self.map[y - 1][x] != (-1)):
             actions.append("Go North")
-        if (y != (len(self.map)-1)) and (self.map[y+1][x] != (-1)):
+        if (y != (len(self.map) - 1)) and (self.map[y + 1][x] != (-1)):
             actions.append("Go South")
-        if (x != (len(self.map[0])-1)) and (self.map[y][x+1] != (-1)):
+        if (x != (len(self.map[0]) - 1)) and (self.map[y][x + 1] != (-1)):
             actions.append("Go East")
-        if (x != 0) and (self.map[y][x-1] != (-1)):
+        if (x != 0) and (self.map[y][x - 1] != (-1)):
             actions.append("Go West")
         # check if there are items here and if so, adding to actions taking the items
         for item in self.items:

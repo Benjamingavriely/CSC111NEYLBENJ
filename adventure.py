@@ -97,23 +97,23 @@ if __name__ == "__main__":
                   "\nSo, I'm signing off for now, but catch me on the flip side."
                   "\nIf you see me at the poutine spot, slide through – we'll vibe over some fries,"
                   "\ncheese curds, and gravy."
-                  "\nUntil then, stay blessed, stay hungry, and we'll rendezvous on the other side. OVO, out. ✌️🍟")
+                  "\nUntil then, stay blessed, stay hungry, and we'll rendezvous on the other side. OVO, out. ✌")
             input("Press enter to continue\n")
             print("\nCongratulations! You have won! \n Score: " + str(p.score))
             p.victory = True
 
         # checks if the player has any moves left
-        if p.num_moves == 45:
+        if p.num_moves == 25:
             print("You only have 5 moves left!")
-        elif p.num_moves == 46:
+        elif p.num_moves == 26:
             print("You only have 4 moves left!")
-        elif p.num_moves == 47:
+        elif p.num_moves == 27:
             print("You only have 3 moves left!")
-        elif p.num_moves == 48:
+        elif p.num_moves == 28:
             print("You only have 2 moves left!")
-        elif p.num_moves == 49:
+        elif p.num_moves == 29:
             print("You only have 1 move left!")
-        elif p.num_moves == 50:
+        elif p.num_moves == 30:
             print("You have no moves left :(")
             print("Game over.")
             exit()

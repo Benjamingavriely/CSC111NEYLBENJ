@@ -12,7 +12,7 @@ completely lost as you just appeared here. Don't be scared, take a deep breath a
 all NPCs. Whenever you feel enough courage to embrace this adventure, you can either enter the food court by the East,
 or just go South to leave this library full of dangerous people. In both cases, remember that you meticulously have to
 choose where to go in that game. Indeed, as far as I know, you are not Hulk or any other 9 feet giant with infinite
-stamina. Unfortunately, you will be limitated to 50 moves. Enough said, get ready for a crazy ride around Taranta !
+stamina. Unfortunately, you will be limitated to 30 moves. Enough said, get ready for a crazy ride around Taranta !
 END
 
 LOCATION 2

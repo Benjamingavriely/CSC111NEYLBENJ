@@ -6,7 +6,7 @@
 \usepackage[margin=0.75in]{geometry}
 
 \title{CSC111 Winter 2024 Project 1}
-\author{TODO: FILL IN YOUR NAME(S) HERE}
+\author{Benjamin and Neyl}
 \date{\today}
 
 \begin{document}
@@ -19,26 +19,34 @@
 
 \item Describe your enhancement \#1 here
 	\begin{itemize}
-	\item Brief description of what the enhancement is (if it's a puzzle, also describe what steps the player must take to solve it):
-	\item Complexity level (choose from low/medium/high):
-	\item Reasons you believe this is the complexity level (e.g. mention implementation details, how much code did you have to add/change from the baseline, what challenges did you face, etc.)
-	% Feel free to add more subheadings if you need
+	\item For this enhancement, we added music to our game that changes once you arrive at a certain location.
+	\item Complexity level: Medium
+	\item Adding music in of itself was of medium complexity, because we had to learn how to use the pygame.mixer add on and
+	\item how to toggle one music on and another off. The implementation of this enhancement was
+	\item not very complex, including just several lines of code. The major issue that we encountered was when the first track played,
+	\item and when the second track toggled, they both played at the same time instead of switching.
+
 	\end{itemize}
 
-% Uncomment below section if you have more enhancements; copy-paste as many times as needed
-%\item Describe your enhancement here
-%	\begin{itemize}
-%	\item Basic description of what the enhancement is:
-%	\item Complexity level (low/medium/high):
-%	\item Reasons you believe this is the complexity level (e.g. mention implementation details 
-%	% Feel free to add more subheadings if you feel the need
-%	\end{itemize}
+\item Describe your enhancement \#2 here
+	\begin{itemize}
+	\item Our second enhancement was a secret shortcut to win the game without having to collect
+	\item any items. This shortcut was found by following a particularly challenging path in the map.
+	\item Complexity level: High
+	\item This shortcut used inheritance by creating a child class of Location, called "pn_tower". This
+	\item child had an additional method which changed the music(from enhancement 1) and was used to create
+	\item the pn_tower secret location in the method get_location. This method used "isinstance" to determine if
+	\item this method should be called, and again to determine if the extra dialogue should be triggered.
+	\item This enhancement also required a lot of extra dialogue in the game and was tedious to complete.
+
+	\end{itemize}
 
 \end{enumerate}
 
 
 \section*{Extra Gameplay Files}
 
-If you have any extra \texttt{gameplay\#.txt} files, describe them below.
+gameplay1.txt
+Shows gameplay of the player finding the secret shortcut to the end of the game by visiting the "pn_tower" location.
 
 \end{document}
