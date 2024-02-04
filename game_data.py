@@ -370,6 +370,8 @@ class World:
             return None
         for location in self.locations:
             if location.map_position == location_num:
+                if isinstance(location, pn_tower):
+                    location.drake_music()
                 return location
 
     def available_actions(self, x: int, y: int) -> list[str]:
