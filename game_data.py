@@ -101,6 +101,13 @@ class pn_tower(Location):
             self.visited_before = False
         else:
             self.visited_before = True
+    def drake_music(self) -> None:
+        """
+        A method that changes the music if the player is in the pn_tower
+        """
+        if self.visited_before:
+            pygame.mixer.music.load("drake.mp3")
+            pygame.mixer_music.play(-1, 0.0, 0)
 
 class Item:
     """An item in our text adventure game world.
@@ -363,9 +370,6 @@ class World:
             return None
         for location in self.locations:
             if location.map_position == location_num:
-                if isinstance(location, pn_tower):
-                    pygame.mixer.music.load("drake.mp3")
-                    pygame.mixer_music.play(-1, 0.0, 0)
                 return location
 
     def available_actions(self, x: int, y: int) -> list[str]:
