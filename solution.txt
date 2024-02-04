@@ -1,0 +1,40 @@
+Go East
+Take Alis_Wraps_Shawarma
+[menu]
+inventory
+back
+Go South
+Go South
+Take Lucky_pen
+[menu]
+inventory
+back
+Go North
+Go East
+Go East
+Go North
+Go East
+Take T-Card
+[menu]
+inventory
+back
+[menu]
+score
+back
+Go West
+Go South
+Go South
+Take ChatGPT
+[menu]
+inventory
+back
+Go South
+Go South
+Go East
+Take Cheat_Sheet
+[menu]
+inventory
+back
+Go West
+Go West
+Write the exam
