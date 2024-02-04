@@ -97,14 +97,8 @@ class pn_tower(Location):
     def __init__(self, position: int, brief: str, long: str, points: int) -> None:
         """Initialize a new location.
         """
-        self.map_position = position
-        self.brief_description = brief
-        self.long_description = long
-        self.points_for_visit = points
-        if position != 1:
-            self.visited_before = False
-        else:
-            self.visited_before = True
+        super().__init__(position, brief, long, points)
+
     def drake_music(self) -> None:
         """
         A method that changes the music if the player is in the pn_tower
